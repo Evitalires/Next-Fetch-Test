@@ -9,8 +9,9 @@ export default function ZorroLazing() {
     registerImage(newImage);
     console.log("addFox");
   }
-  function cleanImages(params) {
+  function cleanImages(e) {
     console.log("clean fox");
+    images.innerHTML = "";
   }
   function random() {
     const max = 122;
@@ -21,25 +22,27 @@ export default function ZorroLazing() {
   }
   function createImageNode() {
     const imagen = document.createElement("img");
-    imagen.src = `https://randomfox.ca/images/${random()}.jpg`;
+    imagen.dataset.src = `https://randomfox.ca/images/${random()}.jpg`;
     imagen.alt = "zorro";
-    imagen.className = "mx-auto my-4 rounded-lg";
+    imagen.className = "mx-auto rounded-lg";
     imagen.width = "320";
     const picture = document.createElement("picture");
+    picture.className = "flex bg-gray-300 min-h-min my-4 rounded-lg";
+    picture.style.minHeight = "fit";
     picture.append(imagen);
 
     return picture;
   }
   useEffect(() => {
     const images = document.getElementById("images");
-    const addFox = document.getElementById("addFox");
-    addFox.addEventListener("click", addImage);
     const cleanFox = document.getElementById("cleanFox");
     cleanFox.addEventListener("click", cleanImages);
+    const addFox = document.getElementById("addFox");
+    addFox.addEventListener("click", addImage);
   }, []);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-14 bg-slate-200 text-blue-950">
-      <h1 className="text-5xl p-4">
+      <h1 className="text-5xl p-4 ">
         <a href="/">Aguacates Store </a>|
         <a href="/zorrolazing"> Zorro lazing </a>
       </h1>
@@ -57,9 +60,12 @@ export default function ZorroLazing() {
           Limpiar
         </button>
       </div>
-      <div id="images">
-        <div className="p-4"></div>
-      </div>
+      <picture
+        width="100px"
+        height="100px"
+        className="bg-gray-500 flex min-w-fit"
+      ></picture>
+      <div id="images"></div>
     </main>
   );
 }
