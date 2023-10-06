@@ -1,17 +1,17 @@
 "use client";
 import { useEffect } from "react";
-import { registerImage } from "./lazy";
+import { registerImage, report, resetReport } from "./lazy";
 
 export default function ZorroLazing() {
   function addImage() {
     const newImage = createImageNode();
     images.append(newImage);
     registerImage(newImage);
-    console.log("addFox");
   }
   function cleanImages(e) {
     console.log("clean fox");
     images.innerHTML = "";
+    resetReport();
   }
   function random() {
     const max = 122;
@@ -60,11 +60,6 @@ export default function ZorroLazing() {
           Limpiar
         </button>
       </div>
-      <picture
-        width="100px"
-        height="100px"
-        className="bg-gray-500 flex min-w-fit"
-      ></picture>
       <div id="images"></div>
     </main>
   );
