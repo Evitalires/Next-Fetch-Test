@@ -1,9 +1,12 @@
 "use client";
 import { useEffect } from "react";
+import { registerImage } from "./lazy";
 
 export default function ZorroLazing() {
   function addImage() {
-    images.append(createImageNode());
+    const newImage = createImageNode();
+    images.append(newImage);
+    registerImage(newImage);
     console.log("addFox");
   }
   function cleanImages(params) {
@@ -11,7 +14,7 @@ export default function ZorroLazing() {
   }
   function random() {
     const max = 122;
-    const min = 0;
+    const min = 1;
     const random = Math.floor(Math.random() * (max - min) + min);
     return random;
     console.log(random);
@@ -33,8 +36,6 @@ export default function ZorroLazing() {
     addFox.addEventListener("click", addImage);
     const cleanFox = document.getElementById("cleanFox");
     cleanFox.addEventListener("click", cleanImages);
-
-    addImage();
   }, []);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-14 bg-slate-200 text-blue-950">
