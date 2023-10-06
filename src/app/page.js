@@ -62,7 +62,10 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-14">
-      <h1 className="text-5xl p-4"> Aguacates Store</h1>
+      <h1 className="text-5xl p-4">
+        <a href="/">Aguacates Store </a> |
+        <a href="/zorrolazing"> Zorro lazing </a>
+      </h1>
       <div id="aguacates" className="m-8 w-full p-4 grid grid-cols-2"></div>
     </main>
   );
